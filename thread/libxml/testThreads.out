@@ -1,0 +1,204 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=23643)
+  Read of size 4 at 0x7fbb2d127e20 by thread T2:
+    #0 xmlDictCreate__internal_alias <null>:0 (libxml2.so.2+0x00000047291f)
+    #1 xmlInitParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x000000059e2e)
+    #2 xmlNewParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x00000005cd5b)
+    #3 xmlCreateURLParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x0000000dc13c)
+    #4 xmlCreateFileParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x0000000dba25)
+    #5 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc511)
+    #6 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #7 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #8 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Previous write of size 4 at 0x7fbb2d127e20 by thread T1:
+    #0 xmlInitializeDict <null>:0 (libxml2.so.2+0x000000472d6a)
+    #1 xmlDictCreate__internal_alias <null>:0 (libxml2.so.2+0x000000472934)
+    #2 xmlInitParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x000000059e2e)
+    #3 xmlNewParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x00000005cd5b)
+    #4 xmlCreateURLParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x0000000dc13c)
+    #5 xmlCreateFileParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x0000000dba25)
+    #6 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc511)
+    #7 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #8 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #9 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Location is global 'xmlDictInitialized' of size 4 at 0x7fbb2d127e20 (libxml2.so.2+0x000000723e20)
+
+  Thread T2 (tid=23662, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+  Thread T1 (tid=23661, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+SUMMARY: ThreadSanitizer: data race ??:0 xmlDictCreate__internal_alias
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=23643)
+  Write of size 4 at 0x7fbb2d126af4 by thread T3:
+    #0 xmlNewInputStream__internal_alias <null>:0 (libxml2.so.2+0x00000005842d)
+    #1 xmlNewInputFromFile__internal_alias <null>:0 (libxml2.so.2+0x000000059689)
+    #2 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c7c5)
+    #3 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b93f)
+    #4 xmlCreateURLParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x0000000dc24a)
+    #5 xmlCreateFileParserCtxt__internal_alias <null>:0 (libxml2.so.2+0x0000000dba25)
+    #6 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc511)
+    #7 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #8 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #9 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Previous write of size 4 at 0x7fbb2d126af4 by thread T1:
+    #0 xmlNewInputStream__internal_alias <null>:0 (libxml2.so.2+0x00000005842d)
+    #1 xmlParseCatalogFile__internal_alias <null>:0 (libxml2.so.2+0x0000002a13e3)
+    #2 xmlParseXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002adacf)
+    #3 xmlFetchXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002ad650)
+    #4 xmlCatalogListXMLResolve <null>:0 (libxml2.so.2+0x0000002a57fd)
+    #5 xmlACatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002a662e)
+    #6 xmlCatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002ab472)
+    #7 xmlResolveResourceFromCatalog <null>:0 (libxml2.so.2+0x00000014c0dd)
+    #8 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c68e)
+    #9 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b836)
+    #10 xmlSAX2ResolveEntity__internal_alias <null>:0 (libxml2.so.2+0x00000047b601)
+    #11 xmlSAX2ExternalSubset__internal_alias <null>:0 (libxml2.so.2+0x00000047a790)
+    #12 xmlParseDocument__internal_alias <null>:0 (libxml2.so.2+0x0000000c2b2b)
+    #13 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc848)
+    #14 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #15 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #16 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Location is global 'xmlNewInputStream__internal_alias.id' of size 4 at 0x7fbb2d126af4 (libxml2.so.2+0x000000722af4)
+
+  Thread T3 (tid=23663, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+  Thread T1 (tid=23661, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+SUMMARY: ThreadSanitizer: data race ??:0 xmlNewInputStream__internal_alias
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=23643)
+  Read of size 8 at 0x7d140000efc0 by thread T3:
+    #0 xmlCatalogListXMLResolve <null>:0 (libxml2.so.2+0x0000002a57d3)
+    #1 xmlACatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002a662e)
+    #2 xmlCatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002ab472)
+    #3 xmlResolveResourceFromCatalog <null>:0 (libxml2.so.2+0x00000014c0dd)
+    #4 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c68e)
+    #5 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b836)
+    #6 xmlSAX2ResolveEntity__internal_alias <null>:0 (libxml2.so.2+0x00000047b601)
+    #7 xmlSAX2ExternalSubset__internal_alias <null>:0 (libxml2.so.2+0x00000047a790)
+    #8 xmlParseDocument__internal_alias <null>:0 (libxml2.so.2+0x0000000c2b2b)
+    #9 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc848)
+    #10 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #11 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #12 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Previous write of size 8 at 0x7d140000efc0 by thread T1:
+    #0 xmlFetchXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002ad78a)
+    #1 xmlCatalogListXMLResolve <null>:0 (libxml2.so.2+0x0000002a57fd)
+    #2 xmlACatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002a662e)
+    #3 xmlCatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002ab472)
+    #4 xmlResolveResourceFromCatalog <null>:0 (libxml2.so.2+0x00000014c0dd)
+    #5 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c68e)
+    #6 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b836)
+    #7 xmlSAX2ResolveEntity__internal_alias <null>:0 (libxml2.so.2+0x00000047b601)
+    #8 xmlSAX2ExternalSubset__internal_alias <null>:0 (libxml2.so.2+0x00000047a790)
+    #9 xmlParseDocument__internal_alias <null>:0 (libxml2.so.2+0x0000000c2b2b)
+    #10 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc848)
+    #11 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #12 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #13 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Location is heap block of size 80 at 0x7d140000efb0 allocated by main thread:
+    #0 malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:480 (lt-testThreads+0x0000000463f9)
+    #1 xmlNewCatalogEntry <null>:0 (libxml2.so.2+0x0000002a4593)
+    #2 xmlLoadACatalog__internal_alias <null>:0 (libxml2.so.2+0x0000002a43be)
+    #3 xmlLoadCatalog__internal_alias <null>:0 (libxml2.so.2+0x0000002aa39f)
+    #4 main <null>:0 (lt-testThreads+0x0000000a56cc)
+
+  Thread T3 (tid=23663, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+  Thread T1 (tid=23661, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+SUMMARY: ThreadSanitizer: data race ??:0 xmlCatalogListXMLResolve
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=23643)
+  Read of size 4 at 0x7d140000c750 by thread T2:
+    #0 xmlCatalogXMLResolve <null>:0 (libxml2.so.2+0x0000002b3c83)
+    #1 xmlCatalogListXMLResolve <null>:0 (libxml2.so.2+0x0000002a58b0)
+    #2 xmlACatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002a662e)
+    #3 xmlCatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002ab472)
+    #4 xmlResolveResourceFromCatalog <null>:0 (libxml2.so.2+0x00000014c0dd)
+    #5 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c68e)
+    #6 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b836)
+    #7 xmlSAX2ResolveEntity__internal_alias <null>:0 (libxml2.so.2+0x00000047b601)
+    #8 xmlSAX2ExternalSubset__internal_alias <null>:0 (libxml2.so.2+0x00000047a790)
+    #9 xmlParseDocument__internal_alias <null>:0 (libxml2.so.2+0x0000000c2b2b)
+    #10 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc848)
+    #11 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #12 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #13 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Previous write of size 8 at 0x7d140000c750 by thread T1:
+    #0 malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:480 (lt-testThreads+0x0000000463f9)
+    #1 xmlNewCatalogEntry <null>:0 (libxml2.so.2+0x0000002a4593)
+    #2 xmlParseXMLCatalogOneNode <null>:0 (libxml2.so.2+0x0000002afd1f)
+    #3 xmlParseXMLCatalogNode <null>:0 (libxml2.so.2+0x0000002aee8e)
+    #4 xmlParseXMLCatalogNodeList <null>:0 (libxml2.so.2+0x0000002ae5ff)
+    #5 xmlParseXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002ae083)
+    #6 xmlFetchXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002ad650)
+    #7 xmlCatalogListXMLResolve <null>:0 (libxml2.so.2+0x0000002a57fd)
+    #8 xmlACatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002a662e)
+    #9 xmlCatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002ab472)
+    #10 xmlResolveResourceFromCatalog <null>:0 (libxml2.so.2+0x00000014c0dd)
+    #11 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c68e)
+    #12 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b836)
+    #13 xmlSAX2ResolveEntity__internal_alias <null>:0 (libxml2.so.2+0x00000047b601)
+    #14 xmlSAX2ExternalSubset__internal_alias <null>:0 (libxml2.so.2+0x00000047a790)
+    #15 xmlParseDocument__internal_alias <null>:0 (libxml2.so.2+0x0000000c2b2b)
+    #16 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc848)
+    #17 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #18 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #19 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Location is heap block of size 80 at 0x7d140000c710 allocated by thread T1:
+    #0 malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:480 (lt-testThreads+0x0000000463f9)
+    #1 xmlNewCatalogEntry <null>:0 (libxml2.so.2+0x0000002a4593)
+    #2 xmlParseXMLCatalogOneNode <null>:0 (libxml2.so.2+0x0000002afd1f)
+    #3 xmlParseXMLCatalogNode <null>:0 (libxml2.so.2+0x0000002aee8e)
+    #4 xmlParseXMLCatalogNodeList <null>:0 (libxml2.so.2+0x0000002ae5ff)
+    #5 xmlParseXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002ae083)
+    #6 xmlFetchXMLCatalogFile <null>:0 (libxml2.so.2+0x0000002ad650)
+    #7 xmlCatalogListXMLResolve <null>:0 (libxml2.so.2+0x0000002a57fd)
+    #8 xmlACatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002a662e)
+    #9 xmlCatalogResolve__internal_alias <null>:0 (libxml2.so.2+0x0000002ab472)
+    #10 xmlResolveResourceFromCatalog <null>:0 (libxml2.so.2+0x00000014c0dd)
+    #11 xmlDefaultExternalEntityLoader <null>:0 (libxml2.so.2+0x00000014c68e)
+    #12 xmlLoadExternalEntity__internal_alias <null>:0 (libxml2.so.2+0x00000014b836)
+    #13 xmlSAX2ResolveEntity__internal_alias <null>:0 (libxml2.so.2+0x00000047b601)
+    #14 xmlSAX2ExternalSubset__internal_alias <null>:0 (libxml2.so.2+0x00000047a790)
+    #15 xmlParseDocument__internal_alias <null>:0 (libxml2.so.2+0x0000000c2b2b)
+    #16 xmlSAXParseFileWithData__internal_alias <null>:0 (libxml2.so.2+0x0000000dc848)
+    #17 xmlSAXParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dcc56)
+    #18 xmlParseFile__internal_alias <null>:0 (libxml2.so.2+0x0000000dd11f)
+    #19 thread_specific_data <null>:0 (lt-testThreads+0x0000000a5d4e)
+
+  Thread T2 (tid=23662, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+  Thread T1 (tid=23661, running) created by main thread at:
+    #0 pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors.cc:877 (lt-testThreads+0x00000004ac7b)
+    #1 main <null>:0 (lt-testThreads+0x0000000a588f)
+
+SUMMARY: ThreadSanitizer: data race ??:0 xmlCatalogXMLResolve
+==================

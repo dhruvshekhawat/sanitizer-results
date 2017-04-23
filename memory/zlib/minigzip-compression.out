@@ -1,0 +1,25 @@
+==11835== WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7f17c0c246b9 in longest_match /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:967
+    #1 0x7f17c0c2003d in deflate_slow /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:1422
+    #2 0x7f17c0c199ff in deflate /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:630
+    #3 0x7f17c0c12d4d in do_flush /home/project/Dhruv_Sanitizers/zlib-1.2.2/gzio.c:730
+    #4 0x7f17c0c144c9 in gzclose /home/project/Dhruv_Sanitizers/zlib-1.2.2/gzio.c:953
+    #5 0x7f17c0c0c127 in gz_compress_mmap /home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip.c:160
+    #6 0x7f17c0c0ba10 in gz_compress /home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip.c:112
+    #7 0x7f17c0c0c8e7 in file_compress /home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip.c:216
+    #8 0x7f17c0c0d6e5 in main /home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip.c:317
+    #9 0x7f17bfaa5b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #10 0x7f17c0c0b6fc in _start (/home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip+0x796fc)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x7f17c0bcc893 in __interceptor_malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/msan/msan_interceptors.cc:855
+    #1 0x7f17c0c3064b in zcalloc /home/project/Dhruv_Sanitizers/zlib-1.2.2/zutil.c:307
+    #2 0x7f17c0c16017 in deflateInit2_ /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:286
+    #3 0x7f17c0c0e34b in gz_open /home/project/Dhruv_Sanitizers/zlib-1.2.2/gzio.c:155
+    #4 0x7f17c0c0db5d in gzopen /home/project/Dhruv_Sanitizers/zlib-1.2.2/gzio.c:212
+    #5 0x7f17c0c0c8a3 in file_compress /home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip.c:211
+    #6 0x7f17c0c0d6e5 in main /home/project/Dhruv_Sanitizers/zlib-1.2.2/minigzip.c:317
+    #7 0x7f17bfaa5b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:967 longest_match
+Exiting

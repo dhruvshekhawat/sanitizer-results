@@ -1,0 +1,21 @@
+ASAN:SIGSEGV
+=================================================================
+==6820==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000043a43d sp 0x7fff038c37d0 bp 0x7fff038c3810 T0)
+    #0 0x43a43c in __interceptor_strncmp /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84
+    #1 0x7fb004f496d3 in __xmlParserInputBufferCreateFilename (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31d6d3)
+    #2 0x7fb004f49e32 in xmlParserInputBufferCreateFilename__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31de32)
+    #3 0x7fb004d19efe in xmlNewInputFromFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0xedefe)
+    #4 0x7fb004f61eb5 in xmlDefaultExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x335eb5)
+    #5 0x7fb004f602bf in xmlNoNetExternalEntityLoader__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3342bf)
+    #6 0x492742 in testExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runsuite+0x492742)
+    #7 0x7fb004f5f6d2 in xmlLoadExternalEntity__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3336d2)
+    #8 0x7fb004e47888 in xmlCreateURLParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21b888)
+    #9 0x7fb004e53bd8 in xmlReadFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x227bd8)
+    #10 0x483aa1 in xsdTest (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runsuite+0x483aa1)
+    #11 0x481a2a in main (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runsuite+0x481a2a)
+    #12 0x7fb003b47b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #13 0x48134c in _start (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runsuite+0x48134c)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84 __interceptor_strncmp
+==6820==ABORTING

@@ -1,0 +1,22 @@
+ASAN:SIGSEGV
+=================================================================
+==6493==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000043918d sp 0x7ffcf19f9e90 bp 0x7ffcf19f9ed0 T0)
+    #0 0x43918c in __interceptor_strncmp /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84
+    #1 0x7f47051d86d3 in __xmlParserInputBufferCreateFilename (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31d6d3)
+    #2 0x7f47051d8e32 in xmlParserInputBufferCreateFilename__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31de32)
+    #3 0x7f4704fa8efe in xmlNewInputFromFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0xedefe)
+    #4 0x7f47051f0eb5 in xmlDefaultExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x335eb5)
+    #5 0x7f47051ee6d2 in xmlLoadExternalEntity__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3336d2)
+    #6 0x7f47050d6888 in xmlCreateURLParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21b888)
+    #7 0x7f47050d5256 in xmlCreateFileParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21a256)
+    #8 0x7f47050d710e in xmlSAXParseFileWithData__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21c10e)
+    #9 0x7f47050d82a9 in xmlSAXParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21d2a9)
+    #10 0x7f47050d90b0 in xmlParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21e0b0)
+    #11 0x480a5d in parseGjobFile (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/example/.libs/lt-gjobread+0x480a5d)
+    #12 0x4805aa in main (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/example/.libs/lt-gjobread+0x4805aa)
+    #13 0x7f4703dd6b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #14 0x48009c in _start (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/example/.libs/lt-gjobread+0x48009c)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84 __interceptor_strncmp
+==6493==ABORTING

@@ -1,0 +1,24 @@
+==32746== WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7fd226151b06 in std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_get_insert_unique_pos(pcrecpp::StringPiece const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa3b06)
+    #1 0x7fd226150c3f in std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_insert_unique(std::pair<pcrecpp::StringPiece const, int> const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa2c3f)
+    #2 0x7fd226145d3b in std::map<pcrecpp::StringPiece, int, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::insert(std::pair<pcrecpp::StringPiece const, int> const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x97d3b)
+    #3 0x7fd226142b05 in CheckSTLComparator() (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x94b05)
+    #4 0x7fd22612943d in main (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x7b43d)
+    #5 0x7fd22465fb44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #6 0x7fd2261290ac in _start (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x7b0ac)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x7fd22611c913 in operator new(unsigned long) /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/msan/msan_new_delete.cc:40
+    #1 0x7fd226154fc5 in __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<pcrecpp::StringPiece const, int> > >::allocate(unsigned long, void const*) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa6fc5)
+    #2 0x7fd226154b26 in __gnu_cxx::__alloc_traits<std::allocator<std::_Rb_tree_node<std::pair<pcrecpp::StringPiece const, int> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<pcrecpp::StringPiece const, int> > >&, unsigned long) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa6b26)
+    #3 0x7fd2261544c5 in std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_get_node() (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa64c5)
+    #4 0x7fd226153f0f in std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_create_node(std::pair<pcrecpp::StringPiece const, int> const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa5f0f)
+    #5 0x7fd226153733 in std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_insert_(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::pair<pcrecpp::StringPiece const, int> const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa5733)
+    #6 0x7fd226150eb6 in std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_insert_unique(std::pair<pcrecpp::StringPiece const, int> const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0xa2eb6)
+    #7 0x7fd226145d3b in std::map<pcrecpp::StringPiece, int, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::insert(std::pair<pcrecpp::StringPiece const, int> const&) (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x97d3b)
+    #8 0x7fd226142886 in CheckSTLComparator() (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x94886)
+    #9 0x7fd22612943d in main (/home/project/pcre/pcre-8.40/.libs/lt-pcre_stringpiece_unittest+0x7b43d)
+    #10 0x7fd22465fb44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value ??:0 std::_Rb_tree<pcrecpp::StringPiece, std::pair<pcrecpp::StringPiece const, int>, std::_Select1st<std::pair<pcrecpp::StringPiece const, int> >, std::less<pcrecpp::StringPiece>, std::allocator<std::pair<pcrecpp::StringPiece const, int> > >::_M_get_insert_unique_pos(pcrecpp::StringPiece const&)
+Exiting

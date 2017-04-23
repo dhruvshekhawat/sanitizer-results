@@ -1,0 +1,26 @@
+ASAN:SIGSEGV
+=================================================================
+==6451==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000043b97d sp 0x7ffc410f2890 bp 0x7ffc410f28d0 T0)
+    #0 0x43b97c in __interceptor_strncmp /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84
+    #1 0x7f6a212fc6d3 in __xmlParserInputBufferCreateFilename (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31d6d3)
+    #2 0x7f6a212fce32 in xmlParserInputBufferCreateFilename__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31de32)
+    #3 0x7f6a210ccefe in xmlNewInputFromFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0xedefe)
+    #4 0x7f6a21314eb5 in xmlDefaultExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x335eb5)
+    #5 0x7f6a213132bf in xmlNoNetExternalEntityLoader__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3342bf)
+    #6 0x4bf03f in testExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x4bf03f)
+    #7 0x7f6a213126d2 in xmlLoadExternalEntity__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3336d2)
+    #8 0x7f6a211fa888 in xmlCreateURLParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21b888)
+    #9 0x7f6a211f9256 in xmlCreateFileParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21a256)
+    #10 0x7f6a211fb10e in xmlSAXParseFileWithData__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21c10e)
+    #11 0x7f6a211fc2a9 in xmlSAXParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21d2a9)
+    #12 0x7f6a211fd0b0 in xmlParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21e0b0)
+    #13 0x4872e7 in oldParseTest (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x4872e7)
+    #14 0x4855e3 in launchTests (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x4855e3)
+    #15 0x48400d in runtest (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x48400d)
+    #16 0x483669 in main (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x483669)
+    #17 0x7f6a20117b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #18 0x48288c in _start (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x48288c)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84 __interceptor_strncmp
+==6451==ABORTING

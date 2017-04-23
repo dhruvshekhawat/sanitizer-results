@@ -1,0 +1,21 @@
+==11827== WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7f81dcbb01b9 in longest_match /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:967
+    #1 0x7f81dcba95dd in deflate_fast /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:1318
+    #2 0x7f81dcba546f in deflate /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:630
+    #3 0x7f81dcba3d50 in deflateParams /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:430
+    #4 0x7f81dcb9529b in test_large_deflate /home/project/Dhruv_Sanitizers/zlib-1.2.2/example.c:280
+    #5 0x7f81dcb98645 in main /home/project/Dhruv_Sanitizers/zlib-1.2.2/example.c:553
+    #6 0x7f81dba2cb44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #7 0x7f81dcb9273c in _start (/home/project/Dhruv_Sanitizers/zlib-1.2.2/example+0x7973c)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x7f81dcb538d3 in __interceptor_malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/msan/msan_interceptors.cc:855
+    #1 0x7f81dcbbc0bb in zcalloc /home/project/Dhruv_Sanitizers/zlib-1.2.2/zutil.c:307
+    #2 0x7f81dcba1a87 in deflateInit2_ /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:286
+    #3 0x7f81dcba12f8 in deflateInit_ /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:210
+    #4 0x7f81dcb950fc in test_large_deflate /home/project/Dhruv_Sanitizers/zlib-1.2.2/example.c:261
+    #5 0x7f81dcb98645 in main /home/project/Dhruv_Sanitizers/zlib-1.2.2/example.c:553
+    #6 0x7f81dba2cb44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /home/project/Dhruv_Sanitizers/zlib-1.2.2/deflate.c:967 longest_match
+Exiting

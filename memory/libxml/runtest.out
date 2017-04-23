@@ -1,0 +1,26 @@
+==24172== WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7f37cc883744 in __xmlParserInputBufferCreateFilename (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4c3744)
+    #1 0x7f37cc88438a in xmlParserInputBufferCreateFilename__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4c438a)
+    #2 0x7f37cc4a28c3 in xmlNewInputFromFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0xe28c3)
+    #3 0x7f37cc8abd18 in xmlDefaultExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4ebd18)
+    #4 0x7f37cc8a8fa9 in xmlNoNetExternalEntityLoader__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4e8fa9)
+    #5 0x7f37cdff74d2 in testExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0xdd4d2)
+    #6 0x7f37cc8a7b93 in xmlLoadExternalEntity__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4e7b93)
+    #7 0x7f37cc6c46d3 in xmlCreateURLParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3046d3)
+    #8 0x7f37cc6c234b in xmlCreateFileParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x30234b)
+    #9 0x7f37cc6c55aa in xmlSAXParseFileWithData__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3055aa)
+    #10 0x7f37cc6c74a0 in xmlSAXParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3074a0)
+    #11 0x7f37cc6c8ac7 in xmlParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x308ac7)
+    #12 0x7f37cdf9e408 in oldParseTest (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x84408)
+    #13 0x7f37cdf9b21f in launchTests (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x8121f)
+    #14 0x7f37cdf98b70 in runtest (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x7eb70)
+    #15 0x7f37cdf97bbd in main (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x7dbbd)
+    #16 0x7f37cb4f8b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #17 0x7f37cdf967ac in _start (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-runtest+0x7c7ac)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x7f37cdf57943 in malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/msan/msan_interceptors.cc:855
+    #1 0x7f37cc1b5288 (/lib/x86_64-linux-gnu/libz.so.1+0x10288)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value ??:0 __xmlParserInputBufferCreateFilename
+Exiting

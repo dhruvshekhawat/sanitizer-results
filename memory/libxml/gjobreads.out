@@ -1,0 +1,22 @@
+==24330== WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7f08b93a1744 in __xmlParserInputBufferCreateFilename (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4c3744)
+    #1 0x7f08b93a238a in xmlParserInputBufferCreateFilename__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4c438a)
+    #2 0x7f08b8fc08c3 in xmlNewInputFromFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0xe28c3)
+    #3 0x7f08b93c9d18 in xmlDefaultExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4ebd18)
+    #4 0x7f08b93c5b93 in xmlLoadExternalEntity__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x4e7b93)
+    #5 0x7f08b91e26d3 in xmlCreateURLParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3046d3)
+    #6 0x7f08b91e034b in xmlCreateFileParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x30234b)
+    #7 0x7f08b91e35aa in xmlSAXParseFileWithData__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3055aa)
+    #8 0x7f08b91e54a0 in xmlSAXParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3074a0)
+    #9 0x7f08b91e6ac7 in xmlParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x308ac7)
+    #10 0x7f08ba894636 in parseGjobFile (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/example/.libs/lt-gjobread+0x79636)
+    #11 0x7f08ba893db7 in main (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/example/.libs/lt-gjobread+0x78db7)
+    #12 0x7f08b7df9b44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #13 0x7f08ba8936cc in _start (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/example/.libs/lt-gjobread+0x786cc)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x7f08ba854863 in malloc /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/msan/msan_interceptors.cc:855
+    #1 0x7f08b8cd3288 (/lib/x86_64-linux-gnu/libz.so.1+0x10288)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value ??:0 __xmlParserInputBufferCreateFilename
+Exiting

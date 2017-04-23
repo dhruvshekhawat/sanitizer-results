@@ -1,0 +1,26 @@
+ASAN:SIGSEGV
+=================================================================
+==6539==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000043917d sp 0x7f32a83e11f0 bp 0x7f32a83e1230 T7)
+    #0 0x43917c in __interceptor_strncmp /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84
+    #1 0x7f32b20ff6d3 in __xmlParserInputBufferCreateFilename (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31d6d3)
+    #2 0x7f32b20ffe32 in xmlParserInputBufferCreateFilename__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x31de32)
+    #3 0x7f32b1ecfefe in xmlNewInputFromFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0xedefe)
+    #4 0x7f32b2117eb5 in xmlDefaultExternalEntityLoader (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x335eb5)
+    #5 0x7f32b21156d2 in xmlLoadExternalEntity__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x3336d2)
+    #6 0x7f32b1ffd888 in xmlCreateURLParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21b888)
+    #7 0x7f32b1ffc256 in xmlCreateFileParserCtxt__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21a256)
+    #8 0x7f32b1ffe10e in xmlSAXParseFileWithData__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21c10e)
+    #9 0x7f32b1fff2a9 in xmlSAXParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21d2a9)
+    #10 0x7f32b20000b0 in xmlParseFile__internal_alias (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/libxml2.so.2+0x21e0b0)
+    #11 0x481590 in thread_specific_data (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-testThreads+0x481590)
+    #12 0x7f32b2d02063 in start_thread (/lib/x86_64-linux-gnu/libpthread.so.0+0x8063)
+    #13 0x7f32b0fe162c (/lib/x86_64-linux-gnu/libc.so.6+0xe862c)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/sanitizer_common/sanitizer_common_interceptors.inc:84 __interceptor_strncmp
+Thread T7 created by T0 here:
+    #0 0x459462 in __interceptor_pthread_create /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/asan/asan_interceptors.cc:185
+    #1 0x48091c in main (/home/project/Dhruv_Sanitizers/libxml2-2.6.30/.libs/lt-testThreads+0x48091c)
+    #2 0x7f32b0f1ab44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+
+==6539==ABORTING

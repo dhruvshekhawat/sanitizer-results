@@ -1,0 +1,20 @@
+UMR in __interceptor_strlen at offset 26 inside [0x60800000dfd8, +27) 
+==315== WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x7ff38a0d2222 in pcre_compile2 (/home/project/pcre/pcre-8.40/.libs/libpcre.so.1+0x10222)
+    #1 0x7ff38a0c99df in pcre_compile (/home/project/pcre/pcre-8.40/.libs/libpcre.so.1+0x79df)
+    #2 0x7ff38a4bf580 in pcrecpp::RE::Compile(pcrecpp::RE::Anchor) (/home/project/pcre/pcre-8.40/.libs/libpcrecpp.so.0+0x6580)
+    #3 0x7ff38a4be865 in pcrecpp::RE::Init(std::string const&, pcrecpp::RE_Options const*) (/home/project/pcre/pcre-8.40/.libs/libpcrecpp.so.0+0x5865)
+    #4 0x7ff38a4fa7a8 in pcrecpp::RE::RE(char const*) (/home/project/pcre/pcre-8.40/.libs/libpcrecpp.so.0+0x417a8)
+    #5 0x7ff38a4f4669 in pcrecpp::Scanner::SetSkipExpression(char const*) (/home/project/pcre/pcre-8.40/.libs/libpcrecpp.so.0+0x3b669)
+    #6 0x7ff38a9bf280 in pcrecpp::Scanner::SkipCXXComments() (/home/project/pcre/pcre-8.40/.libs/lt-pcre_scanner_unittest+0x83280)
+    #7 0x7ff38a9b7754 in TestScanner() (/home/project/pcre/pcre-8.40/.libs/lt-pcre_scanner_unittest+0x7b754)
+    #8 0x7ff38a9b6be8 in main (/home/project/pcre/pcre-8.40/.libs/lt-pcre_scanner_unittest+0x7abe8)
+    #9 0x7ff388eedb44 (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #10 0x7ff38a9b685c in _start (/home/project/pcre/pcre-8.40/.libs/lt-pcre_scanner_unittest+0x7a85c)
+
+  Uninitialized value was created by a heap allocation
+    #0 0x7ff38a9aa0c3 in operator new(unsigned long) /home/lurenwang/llvm-3.4/projects/compiler-rt/lib/msan/msan_new_delete.cc:40
+    #1 0x7ff38954be98 (/usr/lib/x86_64-linux-gnu/libstdc++.so.6+0xbee98)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value ??:0 pcre_compile2
+Exiting
